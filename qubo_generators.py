@@ -1,3 +1,8 @@
+"""
+Each of these take an input of a Networkx graph object
+They return a list of linear terms h,
+and a dictionary of quadratic terms J
+"""
 def maximum_clique_qubo(G):
         h = []
         J = {}
