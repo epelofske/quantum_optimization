@@ -1,11 +1,11 @@
 """
 This is a limited scope quil to qasm converter - it only deals with Hadamard gates, CNOT operators, and the U1 gate (z axis rotation).
-Takes input of a .txt file with quil code, outputs qasm code in a different .txt file
+Takes input of a .txt file with quil code, outputs qasm code in a list
 """
 def quil2qasm(name):
         file = open(name, 'r')
         x = file.readlines()
-        file2 = []
+        file2 = ['include "qelib1.inc";']
         for a in x:
                 ref = list(a)
                 out = ''
