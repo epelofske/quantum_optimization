@@ -14,7 +14,7 @@ def quil2qasm(name):
                                 x = int(i)
                                 out = out+str(x)
                         except ValueError:
-                                rand = 92
+                                _ = 92
                 if ref[0] == 'H':
                         file2.append('h q['+out+'];')
                 allstring = ''
