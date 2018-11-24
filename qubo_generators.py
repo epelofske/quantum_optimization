@@ -83,5 +83,5 @@ def vertex_cover_ising(G):
                 J[a] = 0
         for a in list(G.nodes()):
                 h.append(-1)
-        return Q
+        return h, J
 
