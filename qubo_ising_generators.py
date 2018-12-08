@@ -15,8 +15,6 @@ def maximum_clique_qubo2(G):
         GC = nx.algorithms.operators.unary.complement(G)
         for i in list(G.nodes()):
                 Ql[i] = -1
-#        for a in list(G.edges()):
-#                Qq[a] = 0
         for a in list(GC.edges()):
                 Qq[a] = 2
         return Ql, Qq
@@ -32,8 +30,6 @@ def maximum_clique_qubo(G):
         GC = nx.algorithms.operators.unary.complement(G)
         for i in list(G.nodes()):
                 Q[(i, i)] = -1
-#        for a in list(G.edges()):
-#                Q[a] = 0
         for a in list(GC.edges()):
                 Q[a] = 2
         return Q
@@ -45,8 +41,6 @@ def maximum_independent_set_qubo2(G):
                 Ql[i] = -1
         for a in list(G.edges()):
                 Qq[a] = 2
-#        for a in list(GC.edges()):
-#                Qq[a] = 0
         return Ql, Qq
 def maximum_independent_set_ising(G):
         one, two = maximum_independent_set_qubo2(G)
@@ -60,8 +54,6 @@ def maximum_independent_set_qubo(G):
         GC = nx.algorithms.operators.unary.complement(G)
         for i in list(G.nodes()):
                 Q[(i, i)] = -1
-#        for a in list(GC.edges()):
-#                Q[a] = 0
         for a in list(G.edges()):
                 Q[a] = 2
         return Q
