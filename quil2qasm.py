@@ -5,7 +5,7 @@ Takes input of a .txt file with quil code, outputs qasm code in a list
 def quil2qasm(name):
         file = open(name, 'r')
         x = file.readlines()
-        file2 = ['include "qelib1.inc";']
+        #file2 = ['include "qelib1.inc";']
         for a in x:
                 ref = list(a)
                 out = ''
