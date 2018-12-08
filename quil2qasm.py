@@ -1,5 +1,5 @@
 """
-This is a limited scope quil to qasm converter - it only deals with Hadamard gates, CNOT operators, and the U1 gate (z axis rotation).
+This are limited scope quil to qasm converters - it only deals with Hadamard gates, CNOT operators, and the U1 gate (z axis rotation).
 Takes input of a .txt file with quil code, outputs qasm code in a list
 """
 def quil2qasm(name):
