@@ -109,78 +109,77 @@ def vertex_cover_qubo(G):
         q = vars(bqm_q)
         Q = bqm_to_qubo(q)
         return Q
-def analysis(given):
-        main = []
-        for a in given:
-                if given[a] == 1:
-                        main.append(a)
-        return main
-G = nx.gnp_random_graph(10, 0.6)
-
-print('Maximum Cut:')
-Q = maximum_cut_qubo(G)
-response = QBSolv().sample_qubo(Q)
-x = response.samples()
-resp = []
-for i in x:
-	resp.append(analysis(i))
-print(resp)
-h, J = maximum_cut_ising(G)
-response = QBSolv().sample_ising(h, J)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-
-print('Maximum Clique:')
-Q = maximum_clique_qubo(G)
-response = QBSolv().sample_qubo(Q)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-h, J = maximum_clique_ising(G)
-response = QBSolv().sample_ising(h, J)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-
-print('Minimum Vertex Cover:')
-Q = vertex_cover_qubo(G)
-response = QBSolv().sample_qubo(Q)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-h, J = vertex_cover_ising(G)
-response = QBSolv().sample_ising(h, J)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-
-print('Maximum Independent Set:')
-Q = maximum_independent_set_qubo(G)
-response = QBSolv().sample_qubo(Q)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-h, J = maximum_independent_set_ising(G)
-response = QBSolv().sample_ising(h, J)
-x = response.samples()
-resp = []
-for i in x:
-        resp.append(analysis(i))
-print(resp)
-
-
+def max_cut_qubo_matrix(G):
+        qubo = maximum_cut_qubo(G)
+        data = np.zeros((len(G), len(G)))
+        for a in qubo:
+                data[a[0], a[1]] = qubo[a]
+                data[a[1], a[0]] = qubo[a]
+        return data
+def max_cut_ising_matrix(G):
+        h, J = maximum_cut_ising(G)
+        data = np.zeros((len(G), len(G)))
+        for a in J:
+                data[a[0], a[1]] = J[a]
+                data[a[1], a[0]] = J[a]
+        count = -1
+        for i in h:
+                count += 1
+                data[count, count] = i
+        return data
+def min_vertex_cover_qubo_matrix(G):
+        qubo = vertex_cover_qubo(G)
+        data = np.zeros((len(G), len(G)))
+        for a in qubo:
+                data[a[0], a[1]] = qubo[a]
+                data[a[1], a[0]] = qubo[a]
+        return data
+def min_vertex_cover_ising_matrix(G):
+        h, J = vertex_cover_ising(G)
+        data = np.zeros((len(G), len(G)))
+        for a in J:
+                data[a[0], a[1]] = J[a]
+                data[a[1], a[0]] = J[a]
+        count = -1
+        for i in h:
+                count += 1
+                data[count, count] = i
+        return data
+def max_independent_set_qubo_matrix(G):
+        qubo = maximum_independent_set_qubo(G)
+        data = np.zeros((len(G), len(G)))
+        for a in qubo:
+                data[a[0], a[1]] = qubo[a]
+                data[a[1], a[0]] = qubo[a]
+        return data
+def max_independent_set_ising_matrix(G):
+        h, J = maximum_independent_set_ising(G)
+        data = np.zeros((len(G), len(G)))
+        for a in J:
+                data[a[0], a[1]] = J[a]
+                data[a[1], a[0]] = J[a]
+        count = -1
+        for i in h:
+                count += 1
+                data[count, count] = i
+        return data
+def max_clique_qubo_matrix(G):
+        qubo = maximum_clique_qubo(G)
+        data = np.zeros((len(G), len(G)))
+        for a in qubo:
+                data[a[0], a[1]] = qubo[a]
+                data[a[1], a[0]] = qubo[a]
+        return data
+def max_clique_ising_matrix(G):
+        h, J = maximum_clique_ising(G)
+        data = np.zeros((len(G), len(G)))
+        for a in J:
+                data[a[0], a[1]] = J[a]
+                data[a[1], a[0]] = J[a]
+        count = -1
+        for i in h:
+                count += 1
+                data[count, count] = i
+        return data
 
 
