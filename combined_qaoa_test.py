@@ -11,7 +11,6 @@ from dwave.system.samplers import DWaveSampler
 from qiskit import *
 from qiskit_aqua.algorithms.components.optimizers import *
 
-
 def mc_solver(G):
 	x = list(nx.algorithms.clique.enumerate_all_cliques(G))
 	length = []
