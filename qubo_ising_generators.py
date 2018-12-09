@@ -1,3 +1,11 @@
+"""
+Max Cut QUBO formulation from 
+https://www.sciencedirect.com/science/article/pii/S0166218X01003419 
+
+Maximum Clique, Maximum Independent Set, and Minimum Vertex Cover formluations from 
+https://arxiv.org/abs/1801.08649 and https://arxiv.org/abs/1302.5843 
+
+"""
 import numpy as np
 import networkx as nx
 from dwave_qbsolv import QBSolv
