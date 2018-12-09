@@ -69,12 +69,15 @@ def combined_test(file_name):
 	print(x)
 	result_file.write('ising ibmqx '+str(x)+'\n')
 
-	#sampler = DWaveSampler()
-	#response = sampler.sample_qubo(Q, num_reads=1000)
-	#result_file.write('Dwave QUBO'+str(response)+'\n')
-	#print(response)
-	#response2 = sampler.sample_ising(h, J, num_reads=1000)
-	#result_file.write('Dwave ising'+str(response2)+'\n')
-	#print(response2)
+       h, J = maximum_clique_ising_rigetti(G)
+       Q = maximum_clique_qubo(G)
+       sampler = DWaveSampler()
+       response = sampler.sample_qubo(Q, num_reads=1000)
+       result_file.write('Dwave QUBO'+str(response)+'\n')
+       print(response)
+       response2 = sampler.sample_ising(h, J, num_reads=1000)
+       result_file.write('Dwave ising'+str(response2)+'\n')
+       print(response2)
+
 
 print(combined_test('out2.txt'))
