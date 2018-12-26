@@ -94,11 +94,11 @@ def rigetti_run(file_name):
                 result_out = rigetti_ising_qubo(G, maximum_clique_qubo_rigetti, 'SLSQP', top, a)
                 ref = subg_is_clique(result_out, G)
                 result_file.write(str(a)+'qubo rigetti '+str(result_out)+str(ref)+'\n')
-                print(result_out, ref)
+                print(a, 'qubo', result_out, ref)
                 ref = subg_is_clique(result_out, G)
                 result_out = rigetti_ising_qubo(G, maximum_clique_ising_rigetti, 'SLSQP', top, a)
                 result_file.write(str(a)+'ising rigetti '+str(result_out)+str(ref)+'\n')
-                print(result_out, ref)
+                print(a, 'ising', result_out, ref)
 print(rigetti_run('agave_rigetti_no_noise.txt'))
 def combined_test(file_name):
 	result_file = open(file_name, 'w')
