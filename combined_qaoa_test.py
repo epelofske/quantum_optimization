@@ -77,6 +77,7 @@ def ibmqx_run(file_name):
              print('ising', a, x, ref)
              result_file.write(str(a)+'ising ibmqx '+str(x)+str(ref)+'\n')
 print(ibmqx_run('agave_ibmqx_no_noise.txt'))
+"""
 def rigetti_run(file_name):
         result_file = open(file_name, 'w')
         #G = nx.gnp_random_graph(8, 0.6)
@@ -153,3 +154,4 @@ def combined_test(file_name):
 
 
 print(combined_test('out2.txt'))
+"""
