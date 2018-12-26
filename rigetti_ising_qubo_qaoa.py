@@ -2,7 +2,8 @@ from grove.ising.ising_qaoa import ising
 import sys
 import os
 from contextlib import contextmanager
-
+from pyquil.api._qvm import QVM
+from pyquil.api import QuantumComputer, get_qc
 @contextmanager
 def suppress_stdout():
     with open(os.devnull, "w") as devnull:
@@ -19,13 +20,15 @@ def unique(input):
                         output.append(x)
         return output
 
-def rigetti_ising_qubo(G, func, optimizer):
+def rigetti_ising_qubo(G, func, optimizer, comp, p):
+        qc = get_qc(comp)
         h, J = func(G)
         with suppress_stdout():
-                x, z = ising(h, J, num_steps=2*len(G), samples = 2, minimizer_kwargs = {'method': optimizer})
+                x, z = ising(h, J, num_steps=p, connection=qc, samples = 100, minimizer_kwargs = {'method': optimizer})
         """
         possible methods: COBYLA, SLSQP, TNC, CG, BFGS, Powell, Nelder-Mead, L-BFGS-B
         """
+        return x
         out = unique(x)
         result_out = {}
         for a in out:
@@ -34,4 +37,3 @@ def rigetti_ising_qubo(G, func, optimizer):
                         temp += str(inter_)
                 result_out[temp] = x.count(a)
         return result_out
-
