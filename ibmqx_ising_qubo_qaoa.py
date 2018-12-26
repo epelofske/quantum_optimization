@@ -3,6 +3,8 @@ import numpy as np
 from qiskit.quantum_info import Pauli
 from qiskit_aqua import Operator
 from qiskit_aqua.algorithms.adaptive import QAOA
+from qiskit_aqua.components.optimizers import *
+from qiskit_aqua import QuantumInstance
 
 def sample_most_likely(state_vector):
     if isinstance(state_vector, dict) or isinstance(state_vector, OrderedDict):
@@ -38,6 +40,7 @@ def get_qubitops(input):
         zp[i] = True
         pauli_list.append([w[i, i], Pauli(zp, xp)])
     return Operator(paulis=pauli_list)
+"""
 def solve_ising_qubo(G, matrix_func, optimizer):
 	w = matrix_func(G)
 	ops = get_qubitops(w)
@@ -47,4 +50,18 @@ def solve_ising_qubo(G, matrix_func, optimizer):
 	result = qaoa.run()
 	x = sample_most_likely(result['eigvecs'][0])
 	return x
-
+"""
+#'ibmqx4'
+#'ibmq_16_melbourne'
+from qiskit import IBMQ
+IBMQ.load_accounts()
+def solve_ising_qubo(G, matrix_func, optimizer, p):
+        backend = IBMQ.get_backend("ibmq_qasm_simulator")
+        w = matrix_func(G)
+        ops = get_qubitops(w)
+        optimizer = SLSQP()
+        qaoa = QAOA(ops, optimizer, p, operator_mode='paulis')
+        quantum_instance = QuantumInstance(backend)
+        result = qaoa.run(quantum_instance)
+        x = sample_most_likely(result['eigvecs'][0])
+        return x
