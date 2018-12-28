@@ -66,24 +66,6 @@ def is_vertex_cover(vector, G):
                 return True
         else:
                 return False
-
-def mc_solver(G):
-	x = list(nx.algorithms.clique.enumerate_all_cliques(G))
-	length = []
-	for a in x:
-		length.append(len(a))
-	maximum = max(length)
-	out = []
-	for i in x:
-		if len(i) ==  maximum:
-			out.append(i)
-	return out
-def analysis(given):
-	main = []
-	for a in given:
-		if given[a] == 1:
-			main.append(a)
-	return main
 def subg_is_clique(list, G):
 	count = -1
 	mc = []
