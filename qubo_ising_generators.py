@@ -125,7 +125,7 @@ def maximum_cut_qubo_rigetti(G):
                 quad[a] = 2
         for i in list(G.nodes()):
                 h.append(-1*G.degree(i))
-        return Q
+        return lin, quad
 def maximum_cut_qubo(G):
         Q = {}
         for a in list(G.edges()):
