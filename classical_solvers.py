@@ -66,52 +66,39 @@ def is_vertex_cover(vector, G):
                 return True
         else:
                 return False
-def maximum_cut(G):
-	n = list(G.nodes())
-	out = {}
-	ref_length = []
-	p = ''
-	for i in n:
-		p += str(i)
-	m = list(G.edges())
-	for length in range(1, len(G)):
-		comb = itertools.combinations(p, length)
-		for i in comb:
-			subg1 = []
-			subg2 = []
-			for rem in i:
-				subg1.append(int(rem))
-			G1 = G.copy()
-			for node in list(G.nodes()):
-				if node not in subg1:
-					subg2.append(node)
-			H1 = G.subgraph(subg1)
-			H2 = G.subgraph(subg2)
-			m1 = len(H1.edges())
-			m2 = len(H2.edges())
-			val = len(G.edges())-(m1+m2)
-			out[val] = [list(H1.nodes()), list(H2.nodes())]
-#			print(val, list(H1.nodes()), list(H2.nodes()))
-#	print(out)
-	return max(out)
-G = nx.Graph()
-G.add_edge(0, 1)
-G.add_edge(1, 2)
-G.add_edge(0, 3)
-G.add_edge(2, 3)
-G = nx.gnp_random_graph(7, 0.6)
-GC = nx.algorithms.operators.unary.complement(G)
-print(min_vertex_cover(G))
-print(minimum_vertex_cover(G))
-print(mc_solver(GC))
-print(G.nodes())
-#print(maximum_cut(G))
 
-"""
-file = open('graph2', 'w')
-for a in list(G.edges()):
-	file.write(str(a[0])+' '+str(a[1])+' 1\n')
-"""
-#nx.draw(G, with_labels=True)
-#import matplotlib.pyplot as plt
-#plt.show()
+def mc_solver(G):
+	x = list(nx.algorithms.clique.enumerate_all_cliques(G))
+	length = []
+	for a in x:
+		length.append(len(a))
+	maximum = max(length)
+	out = []
+	for i in x:
+		if len(i) ==  maximum:
+			out.append(i)
+	return out
+def analysis(given):
+	main = []
+	for a in given:
+		if given[a] == 1:
+			main.append(a)
+	return main
+def subg_is_clique(list, G):
+	count = -1
+	mc = []
+	for i in list:
+		count += 1
+		if i == 1:
+			mc.append(count)
+	H = G.subgraph(mc)
+	if is_clique(H) == True:
+		return True
+	else:
+		return False
+def subg_is_clique2(list, G):
+        H = G.subgraph(list)
+        if is_clique(H) == True:
+                return True
+        else:
+                return False
