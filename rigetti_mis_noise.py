@@ -14,7 +14,7 @@ from qiskit_aqua.components.optimizers import *
 from qiskit_aqua import QuantumInstance
 from classical_solvers import *
 
-def combined_test2():
+def combined_test():
 #        G = melbourne()
         G = nx.gnp_random_graph(10, 0.5, 101)
         top = '10q-noisy-qvm'
@@ -33,6 +33,6 @@ def combined_test2():
                 else:
                          qubo.append(0)
                 print(x, qubo)
-print(combined_test2())
+print(combined_test())
 
 
