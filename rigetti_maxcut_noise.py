@@ -23,7 +23,7 @@ def combined_test2():
         ising = []
         qubo = []
         print('Powell, gnp topology, maximum cut, 10q rigetti qvm noise')
-#        print(18)
+        print(20)
         for a in range(1, 50):
                 x.append(a)
                 result_out = rigetti_ising_qubo(G, maximum_cut_qubo_rigetti, opt, top, a)
