@@ -96,15 +96,13 @@ def maximum_independent_set_ising_rigetti(G):
 def maximum_independent_set_qubo_rigetti(G):
         lin = []
         quad = {}
-        GC = nx.algorithms.operators.unary.complement(G)
         for i in list(G.nodes()):
-                h.append(-1)
+                lin.append(-1)
         for a in list(G.edges()):
                 quad[a] = 2
         return lin, quad
 def maximum_independent_set_qubo(G):
         Q = {}
-        GC = nx.algorithms.operators.unary.complement(G)
         for i in list(G.nodes()):
                 Q[(i, i)] = -1
         for a in list(G.edges()):
@@ -124,7 +122,7 @@ def maximum_cut_qubo_rigetti(G):
         for a in list(G.edges()):
                 quad[a] = 2
         for i in list(G.nodes()):
-                h.append(-1*G.degree(i))
+                lin.append(-1*G.degree(i))
         return lin, quad
 def maximum_cut_qubo(G):
         Q = {}
