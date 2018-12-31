@@ -3,7 +3,6 @@ from rigetti_ising_qubo_qaoa import *
 from qubo_ising_generators import *
 import networkx as nx
 from graphs import *
-from qiskit import *
 from classical_solvers import *
 
 def combined_test():
@@ -27,5 +26,3 @@ def combined_test():
                          ising.append(0)
                 print(x, ising)
 print(combined_test())
-
-
