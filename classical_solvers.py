@@ -78,9 +78,3 @@ def subg_is_clique(list, G):
 		return True
 	else:
 		return False
-def subg_is_clique2(list, G):
-        H = G.subgraph(list)
-        if is_clique(H) == True:
-                return True
-        else:
-                return False
