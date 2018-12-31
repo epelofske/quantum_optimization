@@ -80,7 +80,7 @@ def minimum_vertex_cover_ising_dwave(G):
 	return h, J
 
 def max_cut_qubo_matrix_ibmqx(G):
-        qubo = maximum_cut_qubo(G)
+        qubo = maximum_cut_qubo_dwave(G)
         data = np.zeros((len(G), len(G)))
         for a in qubo:
                 data[a[0], a[1]] = qubo[a]
@@ -88,7 +88,7 @@ def max_cut_qubo_matrix_ibmqx(G):
         return data
 
 def minimum_vertex_cover_ising_matrix_ibmqx(G):
-        h, J = vertex_cover_ising_rigetti(G)
+        h, J = minimum_vertex_cover_ising_rigetti(G)
         data = np.zeros((len(G), len(G)))
         for a in J:
                 data[a[0], a[1]] = J[a]
@@ -100,7 +100,7 @@ def minimum_vertex_cover_ising_matrix_ibmqx(G):
         return data
 
 def max_independent_set_qubo_matrix_ibmqx(G):
-        qubo = maximum_independent_set_qubo(G)
+        qubo = maximum_independent_set_qubo_dwave(G)
         data = np.zeros((len(G), len(G)))
         for a in qubo:
                 data[a[0], a[1]] = qubo[a]
@@ -108,7 +108,7 @@ def max_independent_set_qubo_matrix_ibmqx(G):
         return data
 
 def max_clique_qubo_matrix_ibmqx(G):
-        qubo = maximum_clique_qubo(G)
+        qubo = maximum_clique_qubo_dwave(G)
         data = np.zeros((len(G), len(G)))
         for a in qubo:
                 data[a[0], a[1]] = qubo[a]
