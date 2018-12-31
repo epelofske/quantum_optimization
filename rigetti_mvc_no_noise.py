@@ -26,7 +26,7 @@ def combined_test():
         print(minimum_vertex_cover(G))
         for a in range(1, 50):
                 x.append(a)
-                result_out = rigetti_ising_qubo(G, vertex_cover_ising_rigetti, opt, top, a)
+                result_out = rigetti_ising_qubo(G, minimum_vertex_cover_ising_rigetti, opt, top, a)
                 ref = is_vertex_cover(result_out, G)
                 if ref == True:
                          ising.append(result_out.count(1))
