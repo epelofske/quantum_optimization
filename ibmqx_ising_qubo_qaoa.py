@@ -42,39 +42,6 @@ def get_qubitops(input):
         zp[i] = True
         pauli_list.append([w[i, i], Pauli(zp, xp)])
     return Operator(paulis=pauli_list)
-def get_vertexcover_qubitops(G):
-    weight_matrix = nx.to_numpy_matrix(G)
-    n = len(weight_matrix)
-    pauli_list = []
-    shift = 0
-    A = 5
-
-    for i in range(n):
-        for j in range(i):
-            if (weight_matrix[i, j] != 0):
-                wp = np.zeros(n)
-                vp = np.zeros(n)
-                vp[i] = 1
-                vp[j] = 1
-                pauli_list.append([A*0.25, Pauli(vp, wp)])
-
-                vp2 = np.zeros(n)
-                vp2[i] = 1
-                pauli_list.append([-A*0.25, Pauli(vp2, wp)])
-
-                vp3 = np.zeros(n)
-                vp3[j] = 1
-                pauli_list.append([-A*0.25, Pauli(vp3, wp)])
-
-                shift += A*0.25
-
-    for i in range(n):
-        wp = np.zeros(n)
-        vp = np.zeros(n)
-        vp[i] = 1
-        pauli_list.append([0.5, Pauli(vp, wp)])
-        shift += 0.5
-    return Operator(paulis=pauli_list)
 
 #'ibmqx4'
 #'ibmq_16_melbourne'
