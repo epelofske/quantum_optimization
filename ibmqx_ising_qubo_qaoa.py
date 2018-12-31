@@ -49,8 +49,16 @@ from qiskit import IBMQ
 IBMQ.load_accounts()
 
 def solve_ibmqx_ising_qubo(G, matrix_func, optimizer, p):
-        #backend = IBMQ.get_backend("ibmq_qasm_simulator")
         backend = get_aer_backend('qasm_simulator')
+        w = matrix_func(G)
+        ops = get_qubitops(w)
+        qaoa = QAOA(ops, optimizer, p, operator_mode='paulis')
+        quantum_instance = QuantumInstance(backend)
+        result = qaoa.run(quantum_instance)
+        x = sample_most_likely(result['eigvecs'][0])
+        return x
+def solve_ibmqx_ising_qubo_nisq(G, matrix_func, optimizer, p):
+        backend = IBMQ.get_backend('ibmq_16_melbourne')
         w = matrix_func(G)
         ops = get_qubitops(w)
         qaoa = QAOA(ops, optimizer, p, operator_mode='paulis')
