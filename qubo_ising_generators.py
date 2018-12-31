@@ -189,7 +189,7 @@ def min_vertex_cover_qubo_matrix_ibmqx(G):
                 data[a[1], a[0]] = qubo[a]
         return data
 def min_vertex_cover_ising_matrix_ibmqx(G):
-        h, J = vertex_cover_ising(G)
+        h, J = vertex_cover_ising_rigetti(G)
         data = np.zeros((len(G), len(G)))
         for a in J:
                 data[a[0], a[1]] = J[a]
