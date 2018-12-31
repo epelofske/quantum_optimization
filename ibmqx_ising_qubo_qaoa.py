@@ -48,7 +48,7 @@ def get_qubitops(input):
 from qiskit import IBMQ
 IBMQ.load_accounts()
 
-def solve_ising_qubo(G, matrix_func, optimizer, p):
+def solve_ibmqx_ising_qubo(G, matrix_func, optimizer, p):
         #backend = IBMQ.get_backend("ibmq_qasm_simulator")
         backend = get_aer_backend('qasm_simulator')
         w = matrix_func(G)
