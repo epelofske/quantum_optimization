@@ -21,7 +21,7 @@ def combined_test2():
                 x.append(a)
                 start1 = time.clock()
                 start2 = time.time()
-                result_out = rigetti_ising_qubo(G, vertex_cover_ising_rigetti, opt, top, a)
+                result_out = rigetti_ising_qubo(G, minimum_vertex_cover_ising_rigetti, opt, top, a)
                 diff2 = time.time()-start2
                 diff1 = time.clock()-start1
                 timer.append([diff1, diff2])
