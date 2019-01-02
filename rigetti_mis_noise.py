@@ -30,6 +30,6 @@ def combined_test2():
                          qubo.append(result_out.count(1))
                 else:
                          qubo.append(0)
-                print(x, qubo)
+                print(x, qubo, timer)
 print(combined_test2())
 
