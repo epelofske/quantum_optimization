@@ -1,4 +1,4 @@
-ibmqx16 max clique POWELL: [1] [0]
+ibmqx16 max clique 4 vertex square POWELL: [1] [0]
 
 
 
