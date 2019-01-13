@@ -1,3 +1,8 @@
+ibmqx16 max clique POWELL: [1] [0]
+
+
+
+
 Powell, nx.gnp_random_graph(7, 0.5, 101) rigetti qvm:
 minimum vertex cover noise: [0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 7, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6, 0]
 minimum vertex cover no noise: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
