@@ -47,7 +47,8 @@ minvc no noise: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] [0, 
 Powell, melbourne qasm_simulator:
 max clique: [6, 8, 8, 6]
 min vertex cover: [13, 10, 10, 14, 0]
-max cut: [15, 17, 18, 13]
+max cut: [15, 17, 18, 13, 18]
+
 
 
 
