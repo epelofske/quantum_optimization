@@ -49,6 +49,7 @@ max clique: [6, 8, 8, 6]
 min vertex cover: [13, 10, 10, 14, 0]
 max cut: [15, 17, 18, 13, 18]
 
+SLSQP optimzier, ibmqx16, max clqieu of 2: [1, 2, 3, 4, 5, 6, 7] [0, 0, 0, 0, 0, 0, 0]
 
 
 
