@@ -28,4 +28,7 @@ def rigetti_ising_qubo(G, func, optimizer, comp, p):
         """
         possible methods: COBYLA, SLSQP, TNC, CG, BFGS, Powell, Nelder-Mead, L-BFGS-B
         """
+        file = open('ref_quil.txt', 'w')
+        file.write(z.out())
+        file.close()
         return x
