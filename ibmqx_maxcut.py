@@ -18,17 +18,17 @@ from graphs import *
 warnings.filterwarnings("ignore")
 
 def combined_test():
-        G = nx.gnp_random_graph(7, 0.5, 101)
-        #G = nx.algorithms.operators.unary.complement(melbourne())
+        G = nx.gnp_random_graph(8, 0.5, 101)
+#        G = melbourne()
         ising = []
         ising2 = []
         x = []
-        print('ibmqx, max cut, powell, qasm simulator, no noise, gnp graph')
+        print('ibmqx, max cut, slsqp, qasm simulator, no noise, gnp')
         #print(maximum_clique(G))
         for a in range(1, 50):
              x.append(a)
 #             optimizer = POWELL()
-             optimizer = POWELL()
+             optimizer = SLSQP()
              result_out = solve_ibmqx_ising_qubo(G, max_cut_qubo_matrix_ibmqx, optimizer, a)
 
              result2 = []
@@ -42,5 +42,4 @@ def combined_test():
              print(x, ising2)
 
 print(combined_test())
-
 
