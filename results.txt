@@ -53,6 +53,7 @@ SLSQP optimzier, ibmqx16, max clique of 2 (sqaure): [1, 2, 3, 4, 5, 6, 7, 8, 9, 
 
 SLSQP opt, ibmqx16, melbourne graph problem, max cut: [1, 2, 3, 4, 5, 6] [11, 6, 4, 4, 3, 7]
 
+SLSQP opt, ibmqx4, ibmqx4, max cut [1, 2, 3, 4, 5, 6, 7] [4, 4, 4, 2, 2, 4, 2]
 
 
 
