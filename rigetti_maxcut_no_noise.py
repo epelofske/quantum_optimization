@@ -7,15 +7,15 @@ from classical_solvers import *
 import time
 
 def combined_test2():
-        #G = melbourne()
-        G = nx.gnp_random_graph(7, 0.5, 101)
-        top = '7q-qvm'
-        opt = 'POWELL'
+#        G = melbourne()
+        G = nx.gnp_random_graph(8, 0.5, 101)
+        top = '8q-qvm'
+        opt = 'SLSQP'
         x = []
         ising = []
         qubo = []
         timer = []
-        print('Powell, gnp topology, maximum cut, 7q rigetti qvm no noise')
+        print('SLSQP, gnp, maximum cut, 8q rigetti qvm no noise')
         for a in range(1, 50):
                 x.append(a)
                 start1 = time.clock()
@@ -25,6 +25,5 @@ def combined_test2():
                 diff1 = time.clock()-start1
                 timer.append([diff1, diff2])
                 qubo.append(max_cut_value(result_out, G))
-                print(x, qubo, timer)
+                print(x, qubo)
 print(combined_test2())
-
