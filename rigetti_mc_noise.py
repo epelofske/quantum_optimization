@@ -8,14 +8,14 @@ import time
 
 def combined_test2():
 #        G = nx.algorithms.operators.unary.complement(melbourne())
-        G = nx.gnp_random_graph(7, 0.5, 101)
-        top = '7q-noisy-qvm'
-        opt = 'POWELL'
+        G = nx.gnp_random_graph(8, 0.5, 101)
+        top = '8q-noisy-qvm'
+        opt = 'SLSQP'
         x = []
         ising = []
         qubo = []
         timer = []
-        print('Powell, gnp topology, maximum clique, 7q rigetti qvm noise')
+        print('SLSQP, gnp, maximum clique, 8q rigetti qvm noise')
         print(maximum_clique(G))
         for a in range(1, 50):
                 x.append(a)
@@ -30,6 +30,5 @@ def combined_test2():
                          qubo.append(result_out.count(1))
                 else:
                          qubo.append(0)
-                print(x, qubo, timer)
+                print(x, qubo)
 print(combined_test2())
-
