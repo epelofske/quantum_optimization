@@ -30,22 +30,6 @@ def maximum_clique_qubo_dwave(G):
                 Q[a] = 2
         return Q
 
-def maximum_independent_set_qubo_rigetti(G):
-        lin = []
-        quad = {}
-        for i in list(G.nodes()):
-                lin.append(-1)
-        for a in list(G.edges()):
-                quad[a] = 2
-        return lin, quad
-def maximum_independent_set_qubo_dwave(G):
-        Q = {}
-        for i in list(G.nodes()):
-                Q[(i, i)] = -1
-        for a in list(G.edges()):
-                Q[a] = 2
-        return Q
-
 def maximum_cut_qubo_rigetti(G):
         quad = {}
         lin = []
@@ -62,23 +46,21 @@ def maximum_cut_qubo_dwave(G):
                 Q[(i, i)] = -1*G.degree(i)
         return Q
 
-def minimum_vertex_cover_ising_rigetti(G):
+def minimum_vertex_cover_qubo_rigetti(G):
 	J = {}
 	h = []
 	for a in list(G.edges()):
 		J[a] = 2
 	for i in list(G.nodes()):
-		h.append((-1*G.degree(i))-1)
+		h.append((-2*G.degree(i))+1)
 	return h, J
-def minimum_vertex_cover_ising_dwave(G):
-	J = {}
-	h = []
+def minimum_vertex_cover_qubo_dwave(G):
+	Q = {}
 	for a in list(G.edges()):
-		J[a] = 2
+		Q[a] = 2
 	for i in list(G.nodes()):
-		h.append((-1*G.degree(i))-1)
-	return h, J
-
+		Q[(i, i)] = ((-1*G.degree(i))-1)
+	return Q
 def max_cut_qubo_matrix_ibmqx(G):
         qubo = maximum_cut_qubo_dwave(G)
         data = np.zeros((len(G), len(G)))
@@ -87,8 +69,8 @@ def max_cut_qubo_matrix_ibmqx(G):
                 data[a[1], a[0]] = qubo[a]
         return data
 
-def minimum_vertex_cover_ising_matrix_ibmqx(G):
-        h, J = minimum_vertex_cover_ising_rigetti(G)
+def minimum_vertex_cover_qubo_matrix_ibmqx(G):
+        h, J = minimum_vertex_cover_qubo_rigetti(G)
         data = np.zeros((len(G), len(G)))
         for a in J:
                 data[a[0], a[1]] = J[a]
@@ -97,14 +79,6 @@ def minimum_vertex_cover_ising_matrix_ibmqx(G):
         for i in h:
                 count += 1
                 data[count, count] = i
-        return data
-
-def max_independent_set_qubo_matrix_ibmqx(G):
-        qubo = maximum_independent_set_qubo_dwave(G)
-        data = np.zeros((len(G), len(G)))
-        for a in qubo:
-                data[a[0], a[1]] = qubo[a]
-                data[a[1], a[0]] = qubo[a]
         return data
 
 def max_clique_qubo_matrix_ibmqx(G):
