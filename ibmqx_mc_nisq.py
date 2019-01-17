@@ -19,17 +19,24 @@ warnings.filterwarnings("ignore")
 
 def combined_test():
         #G = nx.gnp_random_graph(7, 0.5, 101)
-        G = nx.algorithms.operators.unary.complement(melbourne())
+        G = nx.algorithms.operators.unary.complement(ibmqx4())
+#        G = nx.algorithms.operators.unary.complement(partial_melbourne())
+#        G1 = nx.Graph()
+#        G1.add_edge(0, 1)
+#        G1.add_edge(1, 2)
+#        G1.add_edge(2, 3)
+#        G1.add_edge(0, 3)
+#        G = nx.algorithms.operators.unary.complement(G1)
         ising = []
         ising2 = []
         x = []
-        print('ibmqx, powell, ibmq 16 melbourne, no noise, complement of melbourne')
+        print('ibmqx, slsqp, ibmqx4 solver, complement of ibmqx4')
         print(maximum_clique(G))
         for a in range(1, 50):
              x.append(a)
 #             optimizer = POWELL()
-             optimizer = NELDER_MEAD()
-             result_out = solve_ibmqx_ising_qubo_nisq(G, max_clique_qubo_matrix_ibmqx, optimizer, a)
+             optimizer = SLSQP()
+             result_out = solve_ibmqx_ising_qubo_nisq_ibmqx4(G, max_clique_qubo_matrix_ibmqx, optimizer, a)
 
              result2 = []
              for i in result_out:
@@ -47,5 +54,4 @@ def combined_test():
              print(x, ising2)
 
 print(combined_test())
-
 
