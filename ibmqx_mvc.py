@@ -4,6 +4,7 @@ from ibmqx_ising_qubo_qaoa import *
 from rigetti_ising_qubo_qaoa import *
 from qubo_ising_generators import *
 from pyquil.api import get_qc
+import time
 import networkx as nx
 import numpy as np
 from dwave_qbsolv import QBSolv
@@ -15,22 +16,22 @@ from qiskit_aqua import QuantumInstance
 from classical_solvers import *
 import warnings
 from graphs import *
+#from qiskit.providers.aer import noise
 warnings.filterwarnings("ignore")
 
 def combined_test():
-        G = nx.gnp_random_graph(7, 0.5, 101)
-        #G = nx.algorithms.operators.unary.complement(melbourne())
+        G = nx.gnp_random_graph(8, 0.5, 101)
+#        G = melbourne()
         ising = []
         ising2 = []
         x = []
-        print('ibmqx, min vertex cover, powell, qasm simulator, no noise, gnp graph')
+        print('ibmqx, min vertex cover, slsqp, qasm simulator, no noise, gnp')
         print(minimum_vertex_cover(G))
         for a in range(1, 50):
              x.append(a)
 #             optimizer = POWELL()
-             optimizer = POWELL()
-             result_out = solve_ibmqx_ising_qubo(G, minimum_vertex_cover_ising_matrix_ibmqx, optimizer, a)
-
+             optimizer = SLSQP()
+             result_out = solve_ibmqx_ising_qubo(G, minimum_vertex_cover_qubo_matrix_ibmqx, optimizer, a)
              result2 = []
              for i in result_out:
                   if i == 0:
@@ -47,5 +48,4 @@ def combined_test():
              print(x, ising2)
 
 print(combined_test())
-
 
