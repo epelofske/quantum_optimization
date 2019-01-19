@@ -1,5 +1,5 @@
 Number of Steps = 1
-QASm
+QASM
 
 h q[0];
 h q[1];
