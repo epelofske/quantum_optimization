@@ -1,4 +1,6 @@
 """
+QUBO Generators from NetworkX Graph Objects
+
 Max Cut QUBO formulation from 
 https://www.sciencedirect.com/science/article/pii/S0166218X01003419 
 
