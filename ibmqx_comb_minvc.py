@@ -20,7 +20,7 @@ def ibqmx_qaoa(G, optimizer, func):
             x.append(a)
             qubo = []
             timer = []
-            for avg in range(0, 20):
+            for avg in range(0, 10):
                 start1 = time.clock()
                 result_out = solve_ibmqx_ising_qubo(G, func, optimizer, a)
                 diff1 = time.clock()-start1
