@@ -1,14 +1,10 @@
-from graphs import *
-from quil2qasm import *
-from ibmqx_ising_qubo_qaoa import *
-#from rigetti_ising_qubo_qaoa import *
-from graphs import *
-from qubo_ising_generators import *
-from pyquil.api import get_qc
+from utils.graphs import *
+from utils.ibmqx_ising_qubo_qaoa import *
+from utils.qubo_ising_generators import *
+from utils.classical_solvers import *
 import networkx as nx
 import numpy as np
 import time
-from classical_solvers import *
 import warnings
 warnings.filterwarnings("ignore")
 
