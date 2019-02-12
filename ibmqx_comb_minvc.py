@@ -1,10 +1,7 @@
 from graphs import *
-from quil2qasm import *
 from ibmqx_ising_qubo_qaoa import *
-#from rigetti_ising_qubo_qaoa import *
 from graphs import *
 from qubo_ising_generators import *
-from pyquil.api import get_qc
 import networkx as nx
 import numpy as np
 import time
@@ -50,6 +47,6 @@ def ibqmx_qaoa(G, optimizer, func):
 
 opts = [SLSQP(), COBYLA(), NELDER_MEAD(), POWELL(), CG(), TNC(), L_BFGS_B()]
 G = nx.gnp_random_graph(7, 0.5, 101)
-print('mvc')
+print('min vc')
 for op in opts:
   print(op, ibqmx_qaoa(G, op, minimum_vertex_cover_qubo_matrix_ibmqx))
