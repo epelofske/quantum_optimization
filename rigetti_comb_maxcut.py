@@ -1,9 +1,8 @@
-#from ibmqx_ising_qubo_qaoa import *
-from rigetti_ising_qubo_qaoa import *
-from qubo_ising_generators import *
+from utils.rigetti_ising_qubo_qaoa import *
+from utils.qubo_ising_generators import *
+from utils.graphs import *
+from utils.classical_solvers import *
 import networkx as nx
-from graphs import *
-from classical_solvers import *
 import time
 
 def qaoa_rigetti(G, opt, func):
@@ -38,7 +37,6 @@ def qaoa_rigetti(G, opt, func):
             print(x, qubo_main, timer_main)
 
 opts = ['SLSQP', 'COBYLA', 'NELDER-MEAD', 'POWELL', 'CG', 'TNC', 'L-BFGS-B']
-#opts = ['NELDER-MEAD']
 print('maxcut')
 G = nx.gnp_random_graph(7, 0.5, 101)
 for op in opts:
