@@ -1,20 +1,11 @@
-from graphs import *
-from quil2qasm import *
-from ibmqx_ising_qubo_qaoa import *
-from rigetti_ising_qubo_qaoa import *
-from qubo_ising_generators import *
-from pyquil.api import get_qc
+from utils.graphs import *
+from utils.ibmqx_ising_qubo_qaoa import *
+from utils.qubo_ising_generators import *
+from utils.classical_solvers import *
 import networkx as nx
 import numpy as np
-from dwave_qbsolv import QBSolv
-import dimod
-#from dwave.system.samplers import DWaveSampler
-from qiskit import *
-from qiskit_aqua.components.optimizers import *
-from qiskit_aqua import QuantumInstance
-from classical_solvers import *
+import time
 import warnings
-from graphs import *
 warnings.filterwarnings("ignore")
 
 def combined_test():
