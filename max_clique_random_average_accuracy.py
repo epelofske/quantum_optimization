@@ -17,6 +17,9 @@ for i in range(0, 100):
   subg1 = rand_partition(G)
   H = G.subgraph(subg1)
   val = is_clique(H)
-  out.append(val)
-  avg += val
+  if val == True:
+        out.append(len(H))
+        avg += len(H)
+  else:
+        out.append(0)
   print((float(avg)/float(counter))/float(max(out)))
