@@ -1,6 +1,6 @@
 import networkx as nx
 import itertools
-from graphs import *
+
 def maximum_clique(G):
 	return nx.algorithms.clique.graph_clique_number(G)
 def maximum_independent_set(G):
