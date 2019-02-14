@@ -22,4 +22,5 @@ for i in range(0, 100):
     avg += val
   else:
     out.append(len(G))
+    avg += len(G)
   print((float(avg)/float(counter))/float(max(out)))
