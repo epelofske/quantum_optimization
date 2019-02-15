@@ -27,5 +27,9 @@ def ibqmx_qaoa(G, optimizer, func, r):
             print(float(app_ratio)/float(counter))
 G = nx.gnp_random_graph(7, 0.5, 101)
 print('maxcut')
-for op in opts:
-  print(ibqmx_qaoa(G, SLSQP(), max_cut_qubo_matrix_ibmqx, 1))
+out = []
+for r in range(1, 20):
+    G = nx.gnp_random_graph(7, 0.5, 101)
+    res = ibqmx_qaoa(G, SLSQP(), max_cut_qubo_matrix_ibmqx, r)
+    out.append(res)
+    print(out)
