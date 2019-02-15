@@ -25,7 +25,7 @@ def ibqmx_qaoa(G, optimizer, func, r):
             qubo_main.append(x)
             app_ratio += x
             print(float(app_ratio)/float(counter))
-G = nx.gnp_random_graph(7, 0.5, 101)
+
 print('maxcut')
 out = []
 for r in range(1, 20):
