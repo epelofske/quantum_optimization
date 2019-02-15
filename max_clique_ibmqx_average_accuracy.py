@@ -30,7 +30,10 @@ def ibqmx_qaoa(G, optimizer, func, r):
               qubo_main.append(0)
               app_ratio += 0
             print(float(app_ratio)/float(counter))
-G = nx.gnp_random_graph(7, 0.5, 101)
 print('max clique')
-for op in opts:
-  print(ibqmx_qaoa(G, SLSQP(), max_clique_qubo_matrix_ibmqx, 1))
+out = []
+for r in range(1, 20):
+    G = nx.gnp_random_graph(7, 0.5, 101)
+    res = ibqmx_qaoa(G, SLSQP(), max_clique_qubo_matrix_ibmqx, r)
+    out.append(res)
+    print(out)
