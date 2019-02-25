@@ -57,7 +57,7 @@ def solve_ibmqx_ising_qubo(G, matrix_func, optimizer, p):
         result = qaoa.run(quantum_instance)
         x = sample_most_likely(result['eigvecs'][0])
         return x
-def solve_ibmqx_ising_qubo_nisq(G, matrix_func, optimizer, p):
+def solve_ibmqx_ising_qubo_nisq_melbourne(G, matrix_func, optimizer, p):
         backend = IBMQ.get_backend('ibmq_16_melbourne')
         w = matrix_func(G)
         ops = get_qubitops(w)
@@ -66,3 +66,13 @@ def solve_ibmqx_ising_qubo_nisq(G, matrix_func, optimizer, p):
         result = qaoa.run(quantum_instance)
         x = sample_most_likely(result['eigvecs'][0])
         return x
+def solve_ibmqx_ising_qubo_nisq_ibmqx4(G, matrix_func, optimizer, p):
+        backend = IBMQ.get_backend('ibmqx4')
+        w = matrix_func(G)
+        ops = get_qubitops(w)
+        qaoa = QAOA(ops, optimizer, p, operator_mode='paulis')
+        quantum_instance = QuantumInstance(backend)
+        result = qaoa.run(quantum_instance)
+        x = sample_most_likely(result['eigvecs'][0])
+        return x
+
