@@ -24,10 +24,8 @@ def combined_test():
                         result2.append(1)
                   if i == 1:
                         result2.append(0)
-
              ising2.append(max_cut_value(result2, G))
              print(x, ising2)
-
 print(combined_test())
 
 
