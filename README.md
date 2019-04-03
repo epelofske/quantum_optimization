@@ -4,3 +4,5 @@ The primary purpose of this project is to develop code to run optimization exper
 The required files can be downloaded from https://github.com/rigetti/grove, https://github.com/rigetti/pyquil, https://github.com/Qiskit/qiskit-terra, https://github.com/Qiskit/aqua. Additionally, the beta Rigetti QVM must be downloaded. Also, access to D-WaveLeap must be implemented in order to compare to the D-Wave 2000Q, although it should be noted that none of these services are paid - as long as you are curious or a long term developer, this is trivial to sign up for these services. 
 
 Extra information regarding this general topic of quantum computing can be found in the pdf file in this repository called References_and_Code (4).
+
+Scripts which include nisq in the name access an IBM NISQ device.
