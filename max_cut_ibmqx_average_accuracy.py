@@ -12,7 +12,7 @@ def ibqmx_qaoa(G, optimizer, func, r):
         app_ratio = 0
         qubo_main = []
         counter = 0
-        for avg in range(0, 1000):
+        for avg in range(0, 100):
             counter += 1
             result_out = solve_ibmqx_ising_qubo(G, func, optimizer, r)
             result2 = []
