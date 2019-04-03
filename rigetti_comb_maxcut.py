@@ -20,10 +20,6 @@ def qaoa_rigetti(G, opt, func):
                 diff1 = time.clock()-start1
                 timer.append(diff1)
                 qubo.append(max_cut_value(result_out, G))
-                #if ref == True:
-                #         qubo.append(result_out.count(1))
-                #else:
-                #         qubo.append(0)
             t_avg = 0
             for i in timer:
               t_avg += i
