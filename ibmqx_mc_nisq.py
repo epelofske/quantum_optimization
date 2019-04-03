@@ -9,15 +9,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def combined_test():
-        #G = nx.gnp_random_graph(7, 0.5, 101)
         G = nx.algorithms.operators.unary.complement(ibmqx4())
-#        G = nx.algorithms.operators.unary.complement(partial_melbourne())
-#        G1 = nx.Graph()
-#        G1.add_edge(0, 1)
-#        G1.add_edge(1, 2)
-#        G1.add_edge(2, 3)
-#        G1.add_edge(0, 3)
-#        G = nx.algorithms.operators.unary.complement(G1)
         ising = []
         ising2 = []
         x = []
@@ -25,7 +17,6 @@ def combined_test():
         print(maximum_clique(G))
         for a in range(1, 50):
              x.append(a)
-#             optimizer = POWELL()
              optimizer = SLSQP()
              result_out = solve_ibmqx_ising_qubo_nisq_ibmqx4(G, max_clique_qubo_matrix_ibmqx, optimizer, a)
 
