@@ -1,0 +1,1 @@
+These scripts output overall CPU run time for several different optimization problem instances, and several different classical optimization algorithms. The purpose of this is to discern which classical optimization algorithm (classical part of QAOA) is the fastest.
