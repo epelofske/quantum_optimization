@@ -1,9 +1,17 @@
-from utils.rigetti_ising_qubo_qaoa import *
-from utils.qubo_ising_generators import *
-from utils.graphs import *
-from utils.classical_solvers import *
+import os
+import sys
+d = os.path.dirname(os.getcwd())+'/utils'
+sys.path.append(d)
+from graphs import *
+from ibmqx_ising_qubo_qaoa import *
+from rigetti_ising_qubo_qaoa import *
+from qubo_ising_generators import *
+from classical_solvers import *
 import networkx as nx
+import numpy as np
 import time
+import warnings
+warnings.filterwarnings("ignore")
 
 def qaoa_rigetti(G, opt, func):
         top = str(len(G))+'q-noisy-qvm'
@@ -37,7 +45,6 @@ def qaoa_rigetti(G, opt, func):
             print(x, qubo_main, timer_main)
 
 opts = ['SLSQP', 'COBYLA', 'NELDER-MEAD', 'POWELL', 'CG', 'TNC', 'L-BFGS-B']
-#opts = ['NELDER-MEAD']
 print('MVC')
 G = nx.gnp_random_graph(7, 0.5, 101)
 for op in opts:
