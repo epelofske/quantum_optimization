@@ -1,7 +1,11 @@
-from utils.graphs import *
-from utils.ibmqx_ising_qubo_qaoa import *
-from utils.qubo_ising_generators import *
-from utils.classical_solvers import *
+import os
+import sys
+d = os.path.dirname(os.getcwd())+'/utils'
+sys.path.append(d)
+from graphs import *
+from ibmqx_ising_qubo_qaoa import *
+from qubo_ising_generators import *
+from classical_solvers import *
 import networkx as nx
 import numpy as np
 import time
@@ -28,10 +32,6 @@ def ibqmx_qaoa(G, optimizer, func):
                   if i == 1:
                         result2.append(0)
                 qubo.append(max_cut_value(result2, G))
-                #if ref == True:
-                #  qubo.append(result2.count(1))
-                #else:
-                #  qubo.append(0)
             t_avg = 0
             for i in timer:
               t_avg += i
