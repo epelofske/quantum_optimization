@@ -11,7 +11,7 @@ def rand_partition(G):
 out = []
 avg = 0
 counter = 0
-for i in range(0, 100):
+for i in range(0, 10000):
   counter += 1
   G = nx.gnp_random_graph(7, 0.5, 101)
   subg1 = rand_partition(G)
