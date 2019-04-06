@@ -4,7 +4,6 @@ d = os.path.dirname(os.getcwd())+'/utils'
 sys.path.append(d)
 from graphs import *
 from ibmqx_ising_qubo_qaoa import *
-from rigetti_ising_qubo_qaoa import *
 from qubo_ising_generators import *
 from classical_solvers import *
 import networkx as nx
