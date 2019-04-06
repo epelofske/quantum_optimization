@@ -21,7 +21,7 @@ def cut_value(G, subg1, subg2):
 out = []
 avg = 0
 counter = 0
-for i in range(0, 1000):
+for i in range(0, 10000):
   counter += 1
   G = nx.gnp_random_graph(10, 0.5, 101)
   subg1, subg2 = rand_partition(G)
