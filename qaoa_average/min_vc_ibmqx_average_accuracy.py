@@ -12,7 +12,6 @@ import time
 import warnings
 warnings.filterwarnings("ignore")
 
-
 def ibqmx_qaoa(G, optimizer, func, r):
         app_ratio = 0
         qubo_main = []
